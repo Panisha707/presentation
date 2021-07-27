@@ -1,0 +1,91 @@
+\documentclass{beamer}
+\usetheme{Boadilla}
+
+\title{My Presentation}
+\subtitle{Using Beamer}
+\author{Panisha Gundelli}
+\institute{NIPER, Hyderabad}
+\date{\today}
+
+\begin{document}
+
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+\section{Section 1}
+\subsection{sub a}
+
+\begin{frame}
+\frametitle{Question}
+Find the value of $p$ for which the points 
+$\myvec {A}=\begin{pmatrix}-5\\1\end{pmatrix},
+\myvec {B}=\begin{pmatrix}1\\p\end{pmatrix},
+\myvec {C}=\begin{pmatrix}4\\-2\end{pmatrix}$are collinear
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution}
+Given:-
+$\myvec {A}=\begin{pmatrix}-5\\1\end{pmatrix},
+\myvec {B}=\begin{pmatrix}1\\p\end{pmatrix},
+\myvec {C}=\begin{pmatrix}4\\-2\end{pmatrix}$
+\\Given that the points are collinear, so we create a matrix
+\begin{align}
+  \myvec{M} =  \begin{pmatrix}{\myvec{B}-\myvec{A}&\myvec{C}-\myvec{A}} \end{pmatrix}^{\top}
+\end{align}
+where $rank(\myvec{M})=1$.We have the matrix $\myvec{M}$ as,
+\begin{align}
+    \myvec{M} = \begin{pmatrix}\myvec{1+5&p-1\\4+5&-2-1}
+    \end{pmatrix} \\
+     \myvec{M} = \begin{pmatrix}\myvec{6&p-1\\9&-3}
+     \end{pmatrix}  
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution}
+Now we row reduce the matrix $\myvec{M}$,
+\begin{align}
+\begin{pmatrix}\myvec{6&p-1\\9&-3}
+    \end{pmatrix}
+    \\
+    \overset{R_1\leftrightarrow R_2}{\longleftrightarrow}
+\begin{pmatrix}\myvec{9&-3\\6&p-1}\end{pmatrix}
+\\
+\overset{R_1\rightarrow \frac{R_1}{3}}{\longleftrightarrow}
+\begin{pmatrix}\myvec{3&-1\\6&p-1}\end{pmatrix}
+\\
+\overset{R_2\rightarrow R_2-2R_1}{\longleftrightarrow}
+\begin{pmatrix}\myvec{3&-1\\0&p+1}\end{pmatrix}\\
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution}
+\begin{align}
+    \overset{R_1\rightarrow \frac{R_1}{3}}{\longleftrightarrow}
+\begin{pmatrix}
+\myvec{1&\frac{-1}{3}\\0&p+1}
+\end{pmatrix}
+\end{align}
+Since $rank(\myvec{M})=1$,we have
+\begin{align}
+ p+1=0 \\
+\implies p=-1
+ \end{align}\\
+ Figure  verifies that the points are indeed collinear for $p$ = $-1$
+
+\end{frame}
+\begin{frame}{Graphical solution}   \numberwithin{figure}{section}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\columnwidth]{collinear.png}
+    \caption{Collinear}
+    \label{Graphical solution}
+\end{figure}
+
+\end{frame}
+
+\end{document}
