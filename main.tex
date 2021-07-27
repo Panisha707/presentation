@@ -1,0 +1,110 @@
+\documentclass{beamer}
+\usepackage{listings}
+\lstset{
+%language=C,
+frame=single, 
+breaklines=true,
+columns=fullflexible
+}
+\usepackage{subcaption}
+\usepackage{url}
+\usepackage{tikz}
+\usepackage{tkz-euclide} % loads  TikZ and tkz-base
+%\usetkzobj{all}
+\usetikzlibrary{calc,math}
+\usepackage{float}
+\newcommand\norm[1]{\left\lVert#1\right\rVert}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\usepackage[export]{adjustbox}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usetheme{Boadilla}
+
+\title{Assignment 1}
+\author{Pansha Gundelli}
+\institute{NIPER Hyderabad}
+\date{\today}
+\begin{document}
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+\section{Question}
+\begin{frame}
+\frametitle{Question}
+\begin{block}{cbse/math/10/2006/set2-Q17}
+Find the value of $p$ for which the points\\ 
+$\vec {A}=\begin{pmatrix}-5\\1\end{pmatrix},
+\vec {B}=\begin{pmatrix}1\\p\end{pmatrix},
+\vec {C}=\begin{pmatrix}4\\-2\end{pmatrix}$
+are collinear.
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution}
+Given:-
+$\vec {A}=\begin{pmatrix}-5\\1\end{pmatrix},
+\vec {B}=\begin{pmatrix}1\\p\end{pmatrix},
+\vec {C}=\begin{pmatrix}4\\-2\end{pmatrix}$
+\\Given that the points are collinear, so we create a matrix
+\begin{align}
+  \vec{M} =  \begin{pmatrix}{\vec{B}-\vec{A}&\vec{C}-\vec{A}} \end{pmatrix}^{\top}
+\end{align}
+where $rank(\vec{M})=1$.We have the matrix $\vec{M}$ as,
+\begin{align}
+    \vec{M} = \begin{pmatrix}\myvec{1+5&p-1\\4+5&-2-1}
+    \end{pmatrix} \\
+     \vec{M} = \begin{pmatrix}\myvec{6&p-1\\9&-3}
+     \end{pmatrix}  
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution}
+Now we row reduce the matrix $\vec{M}$,
+\begin{align}
+\begin{pmatrix}\myvec{6&p-1\\9&-3}
+    \end{pmatrix}
+    \\
+    \overset{R_1\leftrightarrow R_2}{\longleftrightarrow}
+\begin{pmatrix}\myvec{9&-3\\6&p-1}\end{pmatrix}
+\\
+\overset{R_1\rightarrow \frac{R_1}{3}}{\longleftrightarrow}
+\begin{pmatrix}\myvec{3&-1\\6&p-1}\end{pmatrix}
+\\
+\overset{R_2\rightarrow R_2-2R_1}{\longleftrightarrow}
+\begin{pmatrix}\myvec{3&-1\\0&p+1}\end{pmatrix}\\
+\end{align}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solution}
+\begin{align}
+    \overset{R_1\rightarrow \frac{R_1}{3}}{\longleftrightarrow}
+\begin{pmatrix}
+\myvec{1&\frac{-1}{3}\\0&p+1}
+\end{pmatrix}
+\end{align}
+Since $rank(\
+\vec{M})=1$,we have
+\begin{align}
+ p+1=0 \\
+\implies p=-1
+ \end{align}\\
+ Figure  verifies that the points are indeed collinear for $p$ = $-1$
+
+\end{frame}
+\begin{frame}{Graphical solution}   \numberwithin{figure}{section}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\columnwidth]{collinear.png}
+    \caption{Collinear}
+    \label{Graphical solution}
+\end{figure}
+\end{frame}
+
+
+
+\end{document}
